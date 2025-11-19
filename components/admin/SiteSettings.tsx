@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useCatalog } from "../../hooks/useCatalog";
 import { useToast } from "../../contexts/ToastContext";
 import { BusinessInfo } from "../../types";
-import { getFullApiUrl } from "../../services/api/apiClient";
+//import { getFullApiUrl } from "../../services/api/apiClient";
 
 const SiteSettings: React.FC = () => {
   const { businessInfo, updateBusinessInfo, isLoading } = useCatalog();
@@ -10,7 +10,7 @@ const SiteSettings: React.FC = () => {
   const [settings, setSettings] = useState<BusinessInfo | null>(businessInfo);
   const [hoursString, setHoursString] = useState("");
   const [bannerImageFile, setBannerImageFile] = useState<File | null>(null);
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  //  const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   useEffect(() => {
     if (businessInfo) {
@@ -49,19 +49,19 @@ const SiteSettings: React.FC = () => {
     );
   };
 
-  const handleBannerImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      setBannerImageFile(file);
+  // const handleBannerImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   if (e.target.files && e.target.files[0]) {
+  //     const file = e.target.files[0];
+  //     setBannerImageFile(file);
 
-      // Crear vista previa
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreview(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  //     // Crear vista previa
+  //     const reader = new FileReader();
+  //     reader.onloadend = () => {
+  //       setImagePreview(reader.result as string);
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -87,14 +87,14 @@ const SiteSettings: React.FC = () => {
       formData.append("BannerImage", bannerImageFile);
     }
 
-    const success = await updateBusinessInfo(formData);
-    if (success) {
-      showToast("Settings updated successfully!", "success");
-      setBannerImageFile(null);
-      setImagePreview(null);
-    } else {
-      showToast("Failed to update settings.", "error");
-    }
+    // const success = await updateBusinessInfo(formData);
+    // if (success) {
+    //   showToast("Settings updated successfully!", "success");
+    //   setBannerImageFile(null);
+    //   setImagePreview(null);
+    // } else {
+    //   showToast("Failed to update settings.", "error");
+    // }
   };
 
   const inputClasses =

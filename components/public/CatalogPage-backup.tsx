@@ -2,7 +2,7 @@ import React from "react";
 import { useCatalog } from "../../hooks/useCatalog";
 import Header from "./Header";
 import Footer from "./Footer";
-import ProductsCard from "./ProductsCard";
+//import ProductsCard from "./ProductsCard";
 import { Products } from "../../types";
 
 const CatalogPage: React.FC = () => {
@@ -24,9 +24,9 @@ const CatalogPage: React.FC = () => {
                 {category.name}
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {categoryProducts.map((product: Products) => (
+                {/* {categoryProducts.map((product: Products) => (
                   <ProductsCard key={product.id} product={product} />
-                ))}
+                ))} */}
               </div>
             </section>
           );
