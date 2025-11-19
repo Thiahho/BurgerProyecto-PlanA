@@ -45,9 +45,6 @@ cp appsettings.Example.json appsettings.json
   "ConnectionStrings": {
     "DefaultConnection": "Host=localhost;Port=5432;Database=TU_BD;Username=TU_USUARIO;Password=TU_PASSWORD"
   },
-  "Admin": {
-    "Password": "tu_password_admin_seguro"
-  },
   "Jwt": {
     "Key": "una_clave_secreta_muy_larga_y_aleatoria_minimo_32_caracteres"
   }
@@ -123,13 +120,16 @@ VITE_API_URL=https://tu-backend-url.onrender.com
 2. Configura las variables de entorno en Render:
 ```
 ConnectionStrings__DefaultConnection=tu_connection_string_de_render
-Admin__Password=tu_password_admin
 Jwt__Key=tu_clave_jwt_secreta
 Jwt__Issuer=DigitalCatalog.Api
 Jwt__Audience=DigitalCatalog.Frontend
+ASPNETCORE_ENVIRONMENT=Production
+ASPNETCORE_URLS=http://+:8080
 ```
 
 3. Despliega el backend a Render
+
+**Credenciales de admin por defecto:** usuario `admin`, contraseña `admin` (cámbiala después del primer despliegue)
 
 ## 🌐 Características
 

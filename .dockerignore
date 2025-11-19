@@ -1,0 +1,70 @@
+# ============================================
+# .dockerignore - Excluir archivos del build
+# ============================================
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+README.md
+*.md
+AUTENTICACION_POSTMAN.md
+DETALLE_DEL_SISTEMA.md
+PLAN_DE_DESARROLLO.md
+
+# Frontend (no necesario para el backend)
+node_modules/
+dist/
+build/
+.vite/
+package.json
+package-lock.json
+*.tsx
+*.ts
+!Back/**/*.cs
+vite.config.ts
+tsconfig.json
+index.html
+public/
+
+# .NET Build artifacts
+**/bin/
+**/obj/
+**/.vs/
+**/.vscode/
+
+# Sensitive files
+**/appsettings.json
+**/appsettings.*.json
+!**/appsettings.Example.json
+.env
+.env.*
+
+# User uploads (si no quieres incluirlos)
+Back/wwwroot/images/*
+# Mantener solo el banner estático
+!Back/wwwroot/img/
+!Back/wwwroot/img/banner2.webp
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Docker
+docker-compose*.yml
+Dockerfile*
+.dockerignore
+
+# IDE
+.idea/
+*.iml
+*.suo
+*.user
