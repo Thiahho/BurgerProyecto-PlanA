@@ -33,7 +33,7 @@ const ProductsDetailPage: React.FC = () => {
             }}
           />
           <p className="text-2xl text-primary font-bold mb-4">
-            ${product.price.toFixed(2)}
+            ${product.price}
           </p>
           <p className="text-lg text-text-light">{product.description}</p>
         </div>

@@ -160,7 +160,7 @@ const ProductsManager: React.FC = () => {
                   {categories.find((c) => c.id === product.categoryId)?.name}
                 </td>
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  ${product.price.toFixed(2)}
+                  ${product.price}
                 </td>
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                   <button
@@ -224,7 +224,7 @@ const ProductsManager: React.FC = () => {
                   name="price"
                   value={currentProducts.price}
                   onChange={handleInputChange}
-                  step="0.01"
+                  step="1"
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   required
                 />

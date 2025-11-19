@@ -7,7 +7,7 @@ interface ProductsCardProps {
   product: Products;
 }
 
-const WhatsAppButton: React.FC<{ productName: string }> = ({ productName }) => {
+const WhatsAppButton: React.FC<{ productName: string; productPrice: number }> = ({ productName, productPrice }) => {
   const { businessInfo } = useCatalog();
 
   if (!businessInfo) return null;
@@ -15,7 +15,7 @@ const WhatsAppButton: React.FC<{ productName: string }> = ({ productName }) => {
   const phoneNumber = +541122692061;
   //const phoneNumber = businessInfo.contact.phone;
   const message = encodeURIComponent(
-    `Hola! Me gustaria ordernar una ${productName}.`
+    `Hola! Me gustaria ordernar una ${productName}, $${productPrice}.`
   );
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
@@ -52,10 +52,10 @@ const ProductsCard: React.FC<ProductsCardProps> = ({ product }) => {
         <p className="text-text-light mt-2 flex-grow">{product.description}</p>
         <div className="mt-4 flex justify-between items-center">
           <p className="text-lg font-bold text-primary">
-            ${product.price.toFixed(2)}
+            ${product.price}
           </p>
         </div>
-        <WhatsAppButton productName={product.name} />
+        <WhatsAppButton productName={product.name} productPrice={product.price} />
       </div>
     </div>
   );

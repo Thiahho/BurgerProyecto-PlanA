@@ -39,29 +39,26 @@ const CategoryManager: React.FC = () => {
     if (success) {
       showToast(
         currentCategory.id
-          ? "Category updated successfully!"
-          : "Category added successfully!",
+          ? "Categoria actualizado correctamente!"
+          : "Category agregado correctamente!",
         "success"
       );
       closeModal();
     } else {
-      showToast("Failed to save category.", "error");
+      showToast("Error al guardar la categorias.", "error");
     }
     setIsSubmitting(false);
   };
 
   const handleDelete = async (categoryId: string) => {
-    showConfirm(
-      "Are you sure you want to delete this category? This cannot be undone.",
-      async () => {
-        const success = await deleteCategory(categoryId);
-        if (success) {
-          showToast("Category deleted successfully!", "success");
-        } else {
-          showToast("Failed to delete category.", "error");
-        }
+    showConfirm("Quiere eliminar la categoria?", async () => {
+      const success = await deleteCategory(categoryId);
+      if (success) {
+        showToast("Categoria eliminado!", "success");
+      } else {
+        showToast("Fallo al eliminar la categoria.", "error");
       }
-    );
+    });
   };
 
   return (
@@ -147,7 +144,7 @@ const CategoryManager: React.FC = () => {
                   className="bg-primary text-white font-bold py-2 px-4 rounded hover:bg-amber-600 transition-colors disabled:bg-gray-400"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Saving..." : "Guardar Categoria"}
+                  {isSubmitting ? "Guardando..." : "Guardar Categoria"}
                 </button>
               </div>
             </form>
