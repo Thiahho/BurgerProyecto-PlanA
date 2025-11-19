@@ -3,7 +3,7 @@ import { useCatalog } from "../../hooks/useCatalog";
 import Header from "./Header";
 import Footer from "./Footer";
 //import ProductsCard from "./ProductsCard";
-import { Products } from "../../types";
+//import { Products } from "../../types";
 
 const CatalogPage: React.FC = () => {
   const { products, categories } = useCatalog();
