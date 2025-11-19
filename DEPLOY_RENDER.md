@@ -119,9 +119,39 @@ Render asigna automáticamente el puerto. El Dockerfile ya está configurado par
 
 ---
 
-## ✅ Paso 6: Verificar el Despliegue
+## 👤 Paso 6: Crear Usuario Admin (Postman)
 
-Una vez desplegado, verifica:
+**IMPORTANTE:** El usuario admin NO se crea automáticamente. Debes crearlo manualmente después del primer despliegue.
+
+**Usando Postman:**
+
+```bash
+POST https://tu-app.onrender.com/api/auth/register
+Content-Type: application/json
+
+Body:
+{
+  "Usuario": "admin",
+  "Password": "tu_password_seguro",
+  "Rol": "admin"
+}
+```
+
+**Respuesta esperada:**
+```json
+{
+  "message": "User registered successfully",
+  "userId": 1
+}
+```
+
+**Nota:** Solo necesitas hacer esto UNA VEZ. Guarda bien la contraseña que uses.
+
+---
+
+## ✅ Paso 7: Verificar el Despliegue
+
+Una vez creado el usuario admin, verifica:
 
 1. **Endpoint de salud**:
 
@@ -131,7 +161,7 @@ Una vez desplegado, verifica:
 
    Debe devolver el catálogo público
 
-2. **Login**:
+2. **Login con tu usuario creado**:
 
    ```bash
    POST https://tu-app.onrender.com/api/auth/login

@@ -15,22 +15,10 @@ namespace Back.Data
             catch (Exception ex)
             {
                 // Si las tablas no existen, fallar con mensaje claro
-                throw new Exception("Las tablas de la base de datos no existen. Ejecuta el script BD/bd_fixed.sql primero.", ex);
+                throw new Exception("Las tablas de la base de datos no existen. Ejecuta el script SQL primero.", ex);
             }
 
-            // Crear usuario admin si no existe
-            if (!context.Users.Any(u => u.Usuario == "admin"))
-            {
-                var adminUser = new User
-                {
-                    Usuario = "admin",
-                    Password = BCrypt.Net.BCrypt.HashPassword("admin"), // Password por defecto: admin
-                    Rol = "admin"
-                };
-
-                context.Users.Add(adminUser);
-                context.SaveChanges();
-            }
+            // El usuario admin se crea manualmente vía Postman usando /api/auth/register
         }
     }
 }
