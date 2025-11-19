@@ -398,6 +398,9 @@ wwwroot/uploads/
 wwwroot/images/products/
 wwwroot/images/banners/
 
-# Environment variables
+# Environment variables and sensitive configuration
+appsettings.json
 appsettings.Development.json
 appsettings.Local.json
+appsettings.*.json
+!appsettings.Example.json
