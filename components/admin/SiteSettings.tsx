@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useCatalog } from "../../hooks/useCatalog";
-import { useToast } from "../../contexts/ToastContext";
+// import { useToast } from "../../contexts/ToastContext";
 import { BusinessInfo } from "../../types";
 //import { getFullApiUrl } from "../../services/api/apiClient";
 
 const SiteSettings: React.FC = () => {
-  const { businessInfo, updateBusinessInfo, isLoading } = useCatalog();
-  const { showToast } = useToast();
+  const { businessInfo, isLoading } = useCatalog();
+  // const { showToast } = useToast();
   const [settings, setSettings] = useState<BusinessInfo | null>(businessInfo);
   const [hoursString, setHoursString] = useState("");
-  const [bannerImageFile, setBannerImageFile] = useState<File | null>(null);
+  // const [bannerImageFile, setBannerImageFile] = useState<File | null>(null);
   //  const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   useEffect(() => {
@@ -83,9 +83,9 @@ const SiteSettings: React.FC = () => {
     });
 
     // Agregar imagen si hay una nueva
-    if (bannerImageFile) {
-      formData.append("BannerImage", bannerImageFile);
-    }
+    // if (bannerImageFile) {
+    //   formData.append("BannerImage", bannerImageFile);
+    // }
 
     // const success = await updateBusinessInfo(formData);
     // if (success) {
