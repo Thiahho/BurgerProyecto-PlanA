@@ -88,7 +88,7 @@ dist-ssr/
 # Imágenes subidas por usuarios (excepto banner estático)
 Back/wwwroot/images/*
 !Back/wwwroot/img/
-!Back/wwwroot/img/banner2.webp
+!Back/wwwroot/img/banner.webp
 
 # Uploads folder
 uploads/

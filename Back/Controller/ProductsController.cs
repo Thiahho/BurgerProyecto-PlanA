@@ -53,7 +53,7 @@ namespace Back.Controller
                     {
                         Title = "Bienvenido",
                         Subtitle = "Configura tu negocio en el panel de administración",
-                        ImageUrl = "/img/banner2.webp" // Imagen estática
+                        ImageUrl = "/img/banner.webp" // Imagen estática
                     },
                     Hours = Array.Empty<string>(),
                     Contact = new ContactDto
@@ -73,7 +73,7 @@ namespace Back.Controller
                     {
                         Title = settings.BannerTitle,
                         Subtitle = settings.BannerSubtitle,
-                        ImageUrl = "/img/banner2.webp" // Imagen estática
+                        ImageUrl = "/img/banner.webp" // Imagen estática
                     },
                     Hours = JsonSerializer.Deserialize<string[]>(settings.HoursJson ?? "[]"),
                     Contact = new ContactDto

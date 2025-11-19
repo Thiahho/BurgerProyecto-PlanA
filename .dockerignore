@@ -46,7 +46,7 @@ public/
 Back/wwwroot/images/*
 # Mantener solo el banner estático
 !Back/wwwroot/img/
-!Back/wwwroot/img/banner2.webp
+!Back/wwwroot/img/banner.webp
 
 # Logs
 *.log

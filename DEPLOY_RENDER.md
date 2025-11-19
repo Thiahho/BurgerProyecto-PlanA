@@ -138,6 +138,7 @@ Body:
 ```
 
 **Respuesta esperada:**
+
 ```json
 {
   "message": "User registered successfully",
@@ -224,7 +225,7 @@ Luego haz commit y push para redesplegar.
 
 ### La imagen del banner no se ve
 
-- El banner estático debe estar en `Back/wwwroot/img/banner2.webp`
+- El banner estático debe estar en `Back/wwwroot/img/banner.webp`
 - Verifica que el Dockerfile copie correctamente la carpeta wwwroot
 
 ---
