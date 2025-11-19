@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useCatalog } from "../../hooks/useCatalog";
-// import { useToast } from "../../contexts/ToastContext";
+import { useToast } from "../../contexts/ToastContext";
 import { BusinessInfo } from "../../types";
 //import { getFullApiUrl } from "../../services/api/apiClient";
 
 const SiteSettings: React.FC = () => {
-  const { businessInfo, isLoading } = useCatalog();
-  // const { showToast } = useToast();
+  const { businessInfo, isLoading, updateBusinessInfo } = useCatalog();
+  const { showToast } = useToast();
   const [settings, setSettings] = useState<BusinessInfo | null>(businessInfo);
   const [hoursString, setHoursString] = useState("");
   // const [bannerImageFile, setBannerImageFile] = useState<File | null>(null);
@@ -87,14 +87,14 @@ const SiteSettings: React.FC = () => {
     //   formData.append("BannerImage", bannerImageFile);
     // }
 
-    // const success = await updateBusinessInfo(formData);
-    // if (success) {
-    //   showToast("Settings updated successfully!", "success");
-    //   setBannerImageFile(null);
-    //   setImagePreview(null);
-    // } else {
-    //   showToast("Failed to update settings.", "error");
-    // }
+    const success = await updateBusinessInfo(formData);
+    if (success) {
+      showToast("¡Configuración actualizada correctamente!", "success");
+      // setBannerImageFile(null);
+      // setImagePreview(null);
+    } else {
+      showToast("No se pudo actualizar la configuración.", "error");
+    }
   };
 
   const inputClasses =
@@ -105,16 +105,16 @@ const SiteSettings: React.FC = () => {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">
+      <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
         Configuracion de la tienda
       </h1>
-      <div className="bg-white p-8 rounded-lg shadow-md">
+      <div className="bg-white p-4 md:p-8 rounded-lg shadow-md">
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="md:col-span-2">
               <h2 className={sectionTitleClasses}>Información comercial</h2>
             </div>
-            <div>
+            <div className="md:col-span-2">
               <label className={labelClasses}>Nombre del Local</label>
               <input
                 type="text"
@@ -124,7 +124,7 @@ const SiteSettings: React.FC = () => {
                 className={inputClasses}
               />
             </div>
-            <div>
+            <div className="md:col-span-2">
               <label className={labelClasses}>DIRECCIÓN</label>
               <input
                 type="text"
@@ -134,7 +134,7 @@ const SiteSettings: React.FC = () => {
                 className={inputClasses}
               />
             </div>
-            <div>
+            <div className="md:col-span-2">
               <label className={labelClasses}>Numero de WhatsApp</label>
               <input
                 type="text"
@@ -150,7 +150,7 @@ const SiteSettings: React.FC = () => {
                 Banner de la página de inicio
               </h2>
             </div>
-            <div>
+            <div className="md:col-span-2">
               <label className={labelClasses}>Titulo Banner</label>
               <input
                 type="text"
@@ -160,7 +160,7 @@ const SiteSettings: React.FC = () => {
                 className={inputClasses}
               />
             </div>
-            <div>
+            <div className="md:col-span-2">
               <label className={labelClasses}>Subtitulo Banner</label>
               <input
                 type="text"
@@ -205,7 +205,7 @@ const SiteSettings: React.FC = () => {
             <div className="md:col-span-2 mt-4">
               <h2 className={sectionTitleClasses}>Horario y redes sociales</h2>
             </div>
-            <div>
+            <div className="md:col-span-2">
               <label className={labelClasses}>Horario de apertura</label>
               <textarea
                 value={hoursString}
@@ -214,7 +214,7 @@ const SiteSettings: React.FC = () => {
                 rows={4}
               ></textarea>
             </div>
-            <div>
+            <div className="md:col-span-2">
               <label className={labelClasses}>Instagram URL</label>
               <input
                 type="text"
@@ -223,7 +223,9 @@ const SiteSettings: React.FC = () => {
                 onChange={handleInputChange}
                 className={inputClasses}
               />
-              <label className={`${labelClasses} mt-4`}>Facebook URL</label>
+            </div>
+            <div className="md:col-span-2">
+              <label className={labelClasses}>Facebook URL</label>
               <input
                 type="text"
                 name="contact.social.facebook"
@@ -237,7 +239,7 @@ const SiteSettings: React.FC = () => {
           <div className="mt-8">
             <button
               type="submit"
-              className="w-full md:w-auto bg-primary text-white font-bold py-2 px-6 rounded hover:bg-amber-600 transition-colors"
+              className="w-full bg-primary text-white font-bold py-3 md:py-2 px-6 rounded hover:bg-amber-600 transition-colors text-lg md:text-base"
             >
               Guardar cambios
             </button>

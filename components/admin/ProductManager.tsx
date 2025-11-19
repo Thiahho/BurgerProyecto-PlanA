@@ -113,7 +113,8 @@ const ProductsManager: React.FC = () => {
         </button>
       </div>
 
-      <div className="bg-white shadow-md rounded-lg overflow-x-auto">
+      {/* Vista de tabla para desktop */}
+      <div className="hidden md:block bg-white shadow-md rounded-lg overflow-x-auto">
         <table className="min-w-full leading-normal">
           <thead>
             <tr>
@@ -182,9 +183,56 @@ const ProductsManager: React.FC = () => {
         </table>
       </div>
 
+      {/* Vista de cards para móvil */}
+      <div className="md:hidden space-y-4">
+        {products.map((product) => (
+          <div key={product.id} className="bg-white shadow-md rounded-lg p-4">
+            <div className="flex gap-4">
+              {product.hasImage ? (
+                <img
+                  src={getProductsImageUrl(product.id)}
+                  alt={product.name}
+                  className="w-20 h-20 object-cover rounded flex-shrink-0"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "/placeholder.png";
+                  }}
+                />
+              ) : (
+                <div className="w-20 h-20 bg-gray-200 rounded flex items-center justify-center text-gray-400 text-xs flex-shrink-0">
+                  No Imagen
+                </div>
+              )}
+              <div className="flex-1 min-w-0">
+                <h3 className="font-bold text-gray-800 truncate">{product.name}</h3>
+                <p className="text-sm text-gray-600">
+                  {categories.find((c) => c.id === product.categoryId)?.name}
+                </p>
+                <p className="text-lg font-semibold text-primary mt-1">
+                  ${product.price}
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-2 mt-4">
+              <button
+                onClick={() => openModal(product)}
+                className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded transition-colors"
+              >
+                Editar
+              </button>
+              <button
+                onClick={() => handleDelete(product.id)}
+                className="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition-colors"
+              >
+                Borrar
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+
       {isModalOpen && currentProducts && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-40 flex justify-center items-center">
-          <div className="bg-white rounded-lg p-8 z-50 w-full max-w-lg max-h-screen overflow-y-auto">
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-40 flex justify-center items-center p-4">
+          <div className="bg-white rounded-lg p-4 md:p-8 z-50 w-full max-w-lg max-h-screen overflow-y-auto">
             <h2 className="text-2xl font-bold mb-4">
               {currentProducts.id ? "Editar Productos" : "Añadir Productos"}
             </h2>

@@ -73,7 +73,8 @@ const CategoryManager: React.FC = () => {
         </button>
       </div>
 
-      <div className="bg-white shadow-md rounded-lg overflow-hidden">
+      {/* Vista de tabla para desktop */}
+      <div className="hidden md:block bg-white shadow-md rounded-lg overflow-hidden">
         <table className="min-w-full leading-normal">
           <thead>
             <tr>
@@ -111,9 +112,34 @@ const CategoryManager: React.FC = () => {
         </table>
       </div>
 
+      {/* Vista de cards para móvil */}
+      <div className="md:hidden space-y-3">
+        {categories.map((category) => (
+          <div key={category.id} className="bg-white shadow-md rounded-lg p-4">
+            <div className="flex justify-between items-center mb-3">
+              <h3 className="font-bold text-gray-800 text-lg">{category.name}</h3>
+            </div>
+            <div className="flex gap-2">
+              <button
+                onClick={() => openModal(category)}
+                className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded transition-colors"
+              >
+                Editar
+              </button>
+              <button
+                onClick={() => handleDelete(category.id)}
+                className="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition-colors"
+              >
+                Eliminar
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+
       {isModalOpen && currentCategory && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-40 flex justify-center items-center">
-          <div className="bg-white rounded-lg p-8 z-50 w-full max-w-md">
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-40 flex justify-center items-center p-4">
+          <div className="bg-white rounded-lg p-4 md:p-8 z-50 w-full max-w-md">
             <h2 className="text-2xl font-bold mb-4">
               {currentCategory.id ? "Editar Categoria" : "Añadir Categoria"}
             </h2>
